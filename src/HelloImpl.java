@@ -1,5 +1,5 @@
 /**
- * Created by thomas on 19/05/17.
+
  */
 import java.rmi.*;
 import java.rmi.server.*;
