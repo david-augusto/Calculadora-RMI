@@ -1,5 +1,5 @@
 /**
- * Created by thomas on 19/05/17.
+
  */
 import java.rmi.*;
 import java.util.Scanner;
@@ -28,18 +28,18 @@ public class HelloServer implements Runnable {
         HelloImpl obj = new HelloImpl() {};
         Naming.rebind("HelloServer", obj);
         
-        // Aguarda alguÈm se conectar. A execuÁ„o do servidor
-        // fica bloqueada na chamada do mÈtodo accept da classe
-        // ServerSocket. Quando alguÈm se conectar ao servidor, o
-        // mÈtodo desbloqueia e retorna com um objeto da classe
-        // Socket, que È uma porta da comunicaÁ„o.
-        System.out.println("Aguardando conex„o do cliente...");
+        // Aguarda algu√©m se conectar. A execu√ß√£o do servidor
+        // fica bloqueada na chamada do m√©todo accept da classe
+        // ServerSocket. Quando algu√©m se conectar ao servidor, o
+        // m√©todo desbloqueia e retorna com um objeto da classe
+        // Socket, que √© uma porta da comunica√ß√£o.
+        System.out.println("Aguardando conex√£o do cliente...");
         
         while (true) {
             Socket client = servidor.accept();
 
             listaDeClientes.add(client);
-            // Cria uma thread do servidor para tratar a conex„o
+            // Cria uma thread do servidor para tratar a conex√£o
             HelloServer tratamento = new HelloServer(client);
             Thread t = new Thread(tratamento);
             // Inicia a thread para o cliente conectado
@@ -48,7 +48,7 @@ public class HelloServer implements Runnable {
     }
     
     /* A classe Thread, que foi instancia no servidor, implementa Runnable.
-       Ent„o vocÍ ter· que implementar sua lÛgica de troca de mensagens dentro deste mÈtodo 'run'.
+       Ent√£o voc√™ ter√° que implementar sua l√≥gica de troca de mensagens dentro deste m√©todo 'run'.
     */
     public void run(){
         System.out.println("Nova conexao com o cliente " + this.client.getInetAddress().getHostAddress());    
